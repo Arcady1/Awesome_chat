@@ -1,17 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './css/style.css';
-
-function scrollToBottom() {
-    setTimeout(() => {
-        const bottomPos = document.getElementById('content').clientHeight;
-
-        window.scrollTo({
-            top: bottomPos,
-            behavior: 'smooth'
-        });
-    }, 100);
-}
+import { scrollToBottom } from './js/dom.js';
 
 function ChatMessages(props) {
     let jsxMessages = [];
@@ -31,53 +21,48 @@ function ChatMessages(props) {
     return jsxMessages;
 }
 
-class MessagesList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            messages: [{
-                id: 101,
-                text: "Welcome to the Awesome chat!"
-            }]
-        }
-    }
+function MessagesList() {   
+    const [messages, setMessages] = useState(
+        [{
+            id: 101,
+            text: "Welcome to the Awesome chat!"
+        }]
+    );
 
-    handleSendMessage(event) {
+    function handleSendMessage(event) {
         if (event.key === "Enter") {
             const inputElement = document.getElementById('chatInput');
             const inputText = inputElement.value;
-            const messages = this.state.messages;
             const id_ = new Date() - 0;
 
-            this.setState({
-                messages: messages.concat([{
+            setMessages(
+                messages.concat([{
                     id: id_,
                     text: inputText
                 }])
-            });
+            )
 
             inputElement.value = "";
         }
     }
 
-    render() {
-        return (
-            <div className="chat">
-                <div className="chat__messages chat__messages_margin">
-                    <ChatMessages messages={this.state.messages} />
-                </div>
-                <div className="chat__input">
-                    <input
-                        className="chat__input__text"
-                        id="chatInput"
-                        type="text"
-                        onKeyUp={(event) => this.handleSendMessage(event)}
-                    >
-                    </input>
-                </div>
+    return (
+        <div className="chat">
+            <div className="chat__messages chat__messages_margin">
+                <ChatMessages messages={messages} />
             </div>
-        );
-    }
+            <div className="chat__input">
+                <input
+                    className="chat__input__text"
+                    id="chatInput"
+                    type="text"
+                    placeholder="Press Enter to send the Message"
+                    onKeyUp={(event) => (handleSendMessage(event))}
+                >
+                </input>
+            </div>
+        </div >
+    );
 }
 
 ReactDOM.render(
