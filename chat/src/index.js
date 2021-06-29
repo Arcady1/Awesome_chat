@@ -16,7 +16,7 @@ function scrollToBottom() {
 function ChatMessages(props) {
     let jsxMessages = [];
 
-    for (let i = props.messages.length - 1; i >= 0; i--) {
+    for (let i = 0; i < props.messages.length; i++) {
         const message = props.messages[i];
 
         jsxMessages.push(

@@ -1,7 +1,7 @@
-@import 'null-style';
-@import '../fonts/fonts';
-@import '../source/templ';
-@import '../source/fonts';
+@import './null-style';
+@import './fonts';
+@import './templ';
+@import './fonts';
 @import './media-style';
 
 html {
@@ -78,7 +78,7 @@ body {
 
             .chat__messages {
                 display: flex;
-                flex-direction: column-reverse;
+                flex-direction: column;
                 justify-content: space-between;
                 width: 100%;
                 height: auto;
