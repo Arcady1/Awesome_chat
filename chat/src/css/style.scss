@@ -10,7 +10,7 @@ html {
 
 :root {
     // Body
-    --bodyBgc: #444;
+    --bodyBgc: #666;
     --bodyPadding: 2%;
     --mainFontFamily: 'Noto Sans JP', sans-serif;
     // Main blocks
@@ -21,7 +21,7 @@ html {
     // Content
     --contentHeight: calc(100% - var(--headerTitleLineHeight));
     // Chat
-    --chatFontSize: 1.5rem;
+    --chatFontSize: 1.2rem;
     // Input
     --inputBlockHeight: 80px;
     --inputFontSize: var(--chatFontSize);
@@ -84,20 +84,27 @@ body {
                 height: auto;
 
                 .chat__message {
-                    display: block;
-                    width: 30%;
-                    height: 100px;
+                    display: flex;
+                    width: 100%;
+                    height: auto;
                     background-color: #333;
                     border-radius: 20px;
 
                     color: #fff;
                     font-family: var(--mainFontFamily);
                     text-align: center;
+                    overflow-wrap: anywhere;
+                    text-align: left;
+                    line-height: var(--headerTitleLineHeight);
                 }
-            }
 
-            .chat__messages_margin {
-                margin-bottom: var(--bodyPadding);
+                .chat__message_margin {
+                    margin-bottom: var(--bodyPadding);
+                }
+
+                .chat__message_padding {
+                    padding: var(--bodyPadding);
+                }
             }
 
             .chat__input {
@@ -110,6 +117,7 @@ body {
                     width: 100%;
                     height: var(--inputBlockHeight);
                     font-size: var(--inputFontSize);
+                    font-family: var(--mainFontFamily);
                     background-color: #fff;
                     transition: .3s;
                     border-radius: 20px;
