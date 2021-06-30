@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './css/style.css';
 import { scrollToBottom } from './js/dom.js';
+import { addDataToFirebaseDb, getDataFromFirebaseDb } from './firebase.js';
 
 function ChatMessages(props) {
     let jsxMessages = [];
@@ -21,26 +22,21 @@ function ChatMessages(props) {
     return jsxMessages;
 }
 
-function MessagesList() {   
-    const [messages, setMessages] = useState(
-        [{
-            id: 101,
-            text: "Welcome to the Awesome chat!"
-        }]
-    );
+function MessagesList() {
+    const [messages, setMessages] = useState(getDataFromFirebaseDb());
 
     function handleSendMessage(event) {
         if (event.key === "Enter") {
             const inputElement = document.getElementById('chatInput');
             const inputText = inputElement.value;
             const id_ = new Date() - 0;
+            const newMessage = {
+                id: id_,
+                text: inputText
+            };
 
-            setMessages(
-                messages.concat([{
-                    id: id_,
-                    text: inputText
-                }])
-            )
+            setMessages(messages.concat([newMessage]));
+            addDataToFirebaseDb(newMessage);
 
             inputElement.value = "";
         }
@@ -56,7 +52,7 @@ function MessagesList() {
                     className="chat__input__text"
                     id="chatInput"
                     type="text"
-                    placeholder="Press Enter to send the Message"
+                    placeholder="Press Enter to send a Message and see the Message history"
                     onKeyUp={(event) => (handleSendMessage(event))}
                 >
                 </input>

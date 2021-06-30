@@ -6,7 +6,7 @@ function scrollToBottom() {
             top: bottomPos,
             behavior: 'smooth'
         });
-    }, 100);
+    }, 0);
 }
 
 export {
