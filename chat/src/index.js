@@ -26,7 +26,7 @@ function ChatMessages(props) {
 }
 
 function MessagesList() {
-    let [messages, setMessages] = useState(getDataFromFirebaseDb());
+    const [messages, setMessages] = useState(getDataFromFirebaseDb());
 
     function handleSendMessage(event) {
         if (event.key === "Enter") {
@@ -38,8 +38,8 @@ function MessagesList() {
                 text: inputText
             };
 
+            setMessages(messages.concat([newMessage]));
             addDataToFirebaseDb(newMessage);
-            setMessages(messages = getDataFromFirebaseDb());
 
             inputElement.value = "";
         }
