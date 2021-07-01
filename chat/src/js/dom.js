@@ -1,3 +1,8 @@
+/**
+ * Scroll down the web page
+ * 
+ */
+
 function scrollToBottom() {
     setTimeout(() => {
         const bottomPos = document.getElementById('content').clientHeight;
