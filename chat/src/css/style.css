@@ -79,6 +79,11 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
+.content__wrapper .content .chat .chat__input .chat__input__text, .content__wrapper .content .chat .chat__messages .chat__message {
+  font-size: var(--inputFontSize);
+  font-family: var(--mainFontFamily);
+}
+
 @media (max-width: 425px) {
   html {
     font-size: 12px !important;
@@ -106,9 +111,10 @@ html {
   --minWidth: 320px;
   --headerTitleLineHeight: 2rem;
   --contentHeight: calc(100% - var(--headerTitleLineHeight));
-  --chatFontSize: 1.2rem;
+  --chatFontSize: 1.1rem;
   --inputBlockHeight: 80px;
   --inputFontSize: var(--chatFontSize);
+  --inpAndChatLRPadding: 20px;
 }
 
 body {
@@ -148,9 +154,9 @@ body {
 .content__wrapper .header .header_title {
   display: block;
   line-height: var(--headerTitleLineHeight);
+  font-family: var(--mainFontFamily);
   font-size: var(--headerTitleLineHeight);
   color: #fff;
-  font-family: var(--mainFontFamily);
   text-align: center;
 }
 .content__wrapper .header_margin {
@@ -200,17 +206,15 @@ body {
   background-color: #333;
   border-radius: 20px;
   color: #fff;
-  font-family: var(--mainFontFamily);
-  text-align: center;
-  overflow-wrap: anywhere;
   text-align: left;
+  overflow-wrap: anywhere;
   line-height: var(--headerTitleLineHeight);
 }
 .content__wrapper .content .chat .chat__messages .chat__message_margin {
   margin-bottom: var(--bodyPadding);
 }
 .content__wrapper .content .chat .chat__messages .chat__message_padding {
-  padding: var(--bodyPadding);
+  padding: var(--bodyPadding) var(--inpAndChatLRPadding) var(--bodyPadding) var(--inpAndChatLRPadding);
 }
 .content__wrapper .content .chat .chat__input {
   display: block;
@@ -221,13 +225,11 @@ body {
   display: block;
   width: 100%;
   height: var(--inputBlockHeight);
-  font-size: var(--inputFontSize);
-  font-family: var(--mainFontFamily);
   background-color: #fff;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   border-radius: 20px;
-  padding: 0 20px;
+  padding: 0 var(--inpAndChatLRPadding);
 }
 .content__wrapper .content .chat .chat__input .chat__input__text:focus {
   -webkit-box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
@@ -239,5 +241,5 @@ body {
 }
 
 .content__wrapper_padding {
-  padding: var(--bodyPadding) 0 var(--bodyPadding) 0;
+  padding: var(--bodyPadding);
 }

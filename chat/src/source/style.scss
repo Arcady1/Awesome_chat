@@ -21,10 +21,12 @@ html {
     // Content
     --contentHeight: calc(100% - var(--headerTitleLineHeight));
     // Chat
-    --chatFontSize: 1.2rem;
+    --chatFontSize: 1.1rem;
     // Input
     --inputBlockHeight: 80px;
     --inputFontSize: var(--chatFontSize);
+    // Input and Chat messages
+    --inpAndChatLRPadding: 20px;
 }
 
 body {
@@ -51,9 +53,9 @@ body {
         .header_title {
             display: block;
             line-height: var(--headerTitleLineHeight);
+            font-family: var(--mainFontFamily);
             font-size: var(--headerTitleLineHeight);
             color: #fff;
-            font-family: var(--mainFontFamily);
             text-align: center;
         }
     }
@@ -90,11 +92,10 @@ body {
                     background-color: #333;
                     border-radius: 20px;
 
+                    @extend %font-settings;
                     color: #fff;
-                    font-family: var(--mainFontFamily);
-                    text-align: center;
-                    overflow-wrap: anywhere;
                     text-align: left;
+                    overflow-wrap: anywhere;
                     line-height: var(--headerTitleLineHeight);
                 }
 
@@ -103,7 +104,7 @@ body {
                 }
 
                 .chat__message_padding {
-                    padding: var(--bodyPadding);
+                    padding: var(--bodyPadding) var(--inpAndChatLRPadding) var(--bodyPadding) var(--inpAndChatLRPadding);
                 }
             }
 
@@ -116,12 +117,12 @@ body {
                     display: block;
                     width: 100%;
                     height: var(--inputBlockHeight);
-                    font-size: var(--inputFontSize);
-                    font-family: var(--mainFontFamily);
                     background-color: #fff;
                     transition: .3s;
                     border-radius: 20px;
-                    padding: 0 20px;
+                    padding: 0 var(--inpAndChatLRPadding);
+
+                    @extend %font-settings;
                 }
 
                 .chat__input__text:focus {
@@ -137,5 +138,5 @@ body {
 }
 
 .content__wrapper_padding {
-    padding: var(--bodyPadding) 0 var(--bodyPadding) 0;
+    padding: var(--bodyPadding);
 }

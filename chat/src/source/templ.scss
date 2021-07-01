@@ -4,3 +4,8 @@
     min-width: var(--minWidth);
     margin: 0 auto;
 }
+
+%font-settings {
+    font-size: var(--inputFontSize);
+    font-family: var(--mainFontFamily);
+}
